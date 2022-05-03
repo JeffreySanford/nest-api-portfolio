@@ -1,7 +1,27 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { Subject } from 'rxjs';
+export class User {
+  name: string;
+  surname: string;
+  address: string;
+  phone: string;
+  email: string;
+  postalCode: string;
+  city: string;
+  number: string;
+  id: string;
+}
 
 @Controller()
 export class UsersController {
@@ -13,8 +33,10 @@ export class UsersController {
   }
 
   @Get()
-  findAll() {
-    return this.usersService.findAll();
+  findAll(): Array<User> {
+    console.log('return userbase');
+    const userbase = this.usersService.findAll();
+    return userbase;
   }
 
   @Get(':id')
