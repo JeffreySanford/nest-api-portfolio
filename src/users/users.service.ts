@@ -32,8 +32,16 @@ export class UsersService {
   remove(id: number) {
     return `This action removes a #${id} user`;
   }
+  
+  convertMsToMinutesSeconds(milliseconds) {
+    const minutes = Math.floor(milliseconds / 60000);
+    const seconds = Math.round((milliseconds % 60000) / 1000);
+  
+    return minutes + ':'+ seconds;
+  }
 
   mockUserbase() {
+    const start = new Date().getTime();
     for (let i = 0; i < 1000000; i++) {
       const user: User = {
         name: Casual.first_name,
@@ -49,5 +57,8 @@ export class UsersService {
       this.userbase.push(user);
       console.log(user);
     }
+    const end = new Date().getTime();
+    const elapsed = this.convertMsToMinutesSeconds(end - start);
+    console.log('finished userbase creation('+this.userbase.length+' records) in ' + elapsed + ' (MIN:SEC)');
   }
 }
