@@ -10,12 +10,12 @@ import {
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { User } from '../user.class';
-
+import { Subject } from 'rxjs';
+import { User } from './user.class';
 
 @Controller()
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly usersService: UsersService) { }
 
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
