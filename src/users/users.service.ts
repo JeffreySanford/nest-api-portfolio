@@ -2,7 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import * as Casual from 'casual';
-import { User } from './users.controller';
+<<<<<<< HEAD
+import { User } from '../user.class';
+
+=======
+import { User } from './user.class';
+>>>>>>> 76472128049d71924f54702e22b3ebe892c2de1a
 @Injectable()
 export class UsersService {
   private userbase = [];
