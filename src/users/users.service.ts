@@ -42,7 +42,7 @@ export class UsersService {
 
   mockUserbase() {
     const start = new Date().getTime();
-    for (let i = 0; i < 1000000; i++) {
+    for (let i = 0; i < 100000; i++) {
       const user: User = {
         name: Casual.first_name,
         surname: Casual.last_name,
@@ -55,7 +55,6 @@ export class UsersService {
         id: Casual.uuid,
       };
       this.userbase.push(user);
-      console.log(user);
     }
     const end = new Date().getTime();
     const elapsed = this.convertMsToMinutesSeconds(end - start);

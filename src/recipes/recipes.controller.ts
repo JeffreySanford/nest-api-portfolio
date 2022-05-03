@@ -5,6 +5,7 @@ import { UpdateRecipeDto } from './dto/update-recipe.dto';
 
 @Controller()
 export class RecipesController {
+  recipes: ({ url: string; name: string; countryOfOrigin: string; description: string; ingredients: string[]; directions: string[]; servingSize: string; history?: undefined; } | { url: string; name: string; countryOfOrigin: string; description: string; ingredients: string[]; directions: string[]; servingSize?: undefined; history?: undefined; } | { url: string; name: string; countryOfOrigin: string; description: string; ingredients: string[]; history: string[]; directions: string[]; servingSize?: undefined; })[];
   constructor(private readonly recipesService: RecipesService) {}
 
   @Post()
@@ -17,18 +18,19 @@ export class RecipesController {
     return this.recipesService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.recipesService.findOne(+id);
+  @Get(':name')
+  findOne(@Param('name') name: string) {
+    name = name.substring(1)
+    return this.recipesService.findOne(name);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateRecipeDto: UpdateRecipeDto) {
-    return this.recipesService.update(+id, updateRecipeDto);
+  @Patch(':name')
+  update(@Param('name') name: string, @Body() updateRecipeDto: UpdateRecipeDto) {
+    return this.recipesService.update(+name, updateRecipeDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.recipesService.remove(+id);
+  @Delete(':name')
+  remove(@Param('name') name: string) {
+    return this.recipesService.remove(+name);
   }
 }
