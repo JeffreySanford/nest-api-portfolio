@@ -17,7 +17,7 @@ export class User {
   address: string;
   phone: string;
   email: string;
-  postalCode: string;
+  postalCode: any;
   city: string;
   number: string;
   id: string;
