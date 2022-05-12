@@ -2,10 +2,11 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { RecipesService } from './recipes.service';
 import { CreateRecipeDto } from './dto/create-recipe.dto';
 import { UpdateRecipeDto } from './dto/update-recipe.dto';
+import { Recipe } from './recipe.class';
 
 @Controller()
 export class RecipesController {
-  recipes: ({ url: string; name: string; countryOfOrigin: string; description: string; ingredients: string[]; directions: string[]; servingSize: string; history?: undefined; } | { url: string; name: string; countryOfOrigin: string; description: string; ingredients: string[]; directions: string[]; servingSize?: undefined; history?: undefined; } | { url: string; name: string; countryOfOrigin: string; description: string; ingredients: string[]; history: string[]; directions: string[]; servingSize?: undefined; })[];
+  recipes: Array<Recipe>
   constructor(private readonly recipesService: RecipesService) {}
 
   @Post()

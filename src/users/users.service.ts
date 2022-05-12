@@ -33,7 +33,7 @@ export class UsersService {
     return `This action removes a #${id} user`;
   }
   
-  convertMsToMinutesSeconds(milliseconds) {
+  convertMsToMinutesSeconds(milliseconds: number) {
     const minutes = Math.floor(milliseconds / 60000);
     const seconds = Math.round((milliseconds % 60000) / 1000);
   
