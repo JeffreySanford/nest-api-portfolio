@@ -29,6 +29,10 @@ export class UsersController {
     return userbase;
   }
 
+  updateUserbase(size: number): User[] {
+    return this.usersService.updateUserbase(size);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(+id);

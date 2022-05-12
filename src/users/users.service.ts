@@ -6,14 +6,20 @@ import { User } from './user.class';
 
 @Injectable()
 export class UsersService {
-  private userbase = [];
+  private userbase: User[] = [];
+  userbaseSize: number;
 
   constructor() {
-    this.mockUserbase();
+    this.mockUserbase(100000);
   }
 
   create(createUserDto: CreateUserDto) {
     return 'This action adds a new user';
+  }
+
+  updateUserbase(size: number): User[] {
+    this.mockUserbase(size);
+    return this.userbase;
   }
 
   findAll() {
@@ -40,9 +46,9 @@ export class UsersService {
     return minutes + ':'+ seconds;
   }
 
-  mockUserbase() {
+  mockUserbase(size: number) {
     const start = new Date().getTime();
-    for (let i = 0; i < 100000; i++) {
+    for (let i = 0; i < size; i++) {
       const user: User = {
         name: Casual.first_name,
         surname: Casual.last_name,
