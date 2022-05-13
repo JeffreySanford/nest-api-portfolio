@@ -28,6 +28,7 @@ export class InventoryController {
 
     @Patch(':name')
     update(@Param('item') item: Item, @Body() updateInventoryDto: UpdateInventoryDto) {
+       console.log(item);
         return this.inventoryService.update(item, updateInventoryDto);
     }
 

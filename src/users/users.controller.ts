@@ -29,6 +29,11 @@ export class UsersController {
     return userbase;
   }
 
+  @Patch(':name')
+  update(@Param('size') size: number, @Body() updateInventoryDto: UpdateUserDto) {
+      return this.updateUserbase(size);
+  }
+
   updateUserbase(size: number): User[] {
     return this.usersService.updateUserbase(size);
   }

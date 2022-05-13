@@ -10,7 +10,7 @@ export class UsersService {
   userbaseSize: number;
 
   constructor() {
-    this.mockUserbase(100000);
+    this.mockUserbase(10000);
   }
 
   create(createUserDto: CreateUserDto) {
@@ -18,7 +18,8 @@ export class UsersService {
   }
 
   updateUserbase(size: number): User[] {
-    this.mockUserbase(size);
+    console.log('update with '+size);
+    this.userbase = this.mockUserbase(size);
     return this.userbase;
   }
 
@@ -46,8 +47,9 @@ export class UsersService {
     return minutes + ':'+ seconds;
   }
 
-  mockUserbase(size: number) {
+  mockUserbase(size: number): User[] {
     const start = new Date().getTime();
+    console.log('mock '+ size)
     for (let i = 0; i < size; i++) {
       const user: User = {
         name: Casual.first_name,
@@ -65,5 +67,7 @@ export class UsersService {
     const end = new Date().getTime();
     const elapsed = this.convertMsToMinutesSeconds(end - start);
     console.log('finished userbase creation('+this.userbase.length+' records) in ' + elapsed + ' (MIN:SEC)');
+
+    return this.userbase;
   }
 }
