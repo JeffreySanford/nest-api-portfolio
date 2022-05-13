@@ -36,11 +36,14 @@ export class InventoryService {
 
     update(newItem: Item, updateRecipeDto: UpdateInventoryDto): Array<Item> {
         this.inventory.map((item) => {
-            if (item.name === newItem.name) {
-                const index = this.inventory.indexOf(item)
-                this.inventory[index] = newItem;
-
-                return this.inventory;
+            if(item) {
+                console.log(item)
+                if (item.name === newItem.name) {
+                    const index = this.inventory.indexOf(item)
+                    this.inventory[index] = newItem;
+    
+                    return this.inventory;
+                }    
             }
         });
 
