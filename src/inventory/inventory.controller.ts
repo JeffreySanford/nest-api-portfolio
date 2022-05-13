@@ -15,7 +15,7 @@ export class InventoryController {
         return this.inventoryService.findAll();
     }
 
-    @Get(':name')
+    @Get('')
     findOne(@Param('name') name: string) {
         name = name.substring(1)
         return this.inventoryService.findOne(name);
@@ -26,7 +26,7 @@ export class InventoryController {
         return this.inventoryService.create(createInventoryDto);
     }
 
-    @Patch(':name')
+    @Patch('')
     update(@Param('item') item: Item, @Body() updateInventoryDto: UpdateInventoryDto) {
        console.log(item);
         return this.inventoryService.update(item, updateInventoryDto);
