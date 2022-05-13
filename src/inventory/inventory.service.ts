@@ -35,7 +35,7 @@ export class InventoryService {
     }
 
     update(newItem: Item, updateRecipeDto: UpdateInventoryDto): Array<Item> {
-        console.log('service with new item ' + newItem)
+        console.log('service with new item ' + newItem.quantity)
         this.inventory.map((item) => {
             if('service receives '+ item + ' and new Item '+  newItem) {
                 console.log(item)
