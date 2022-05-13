@@ -38,7 +38,8 @@ export class InventoryService {
         console.log('service with new item ' + newItem.quantity)
         this.inventory.map((item) => {
             if(newItem) {
-                console.log('service receives '+ item + ' and new Item '+  newItem)
+							console.dir(newItem);
+                console.dir(item);
                 if (item.name === newItem.name) {
                     console.log('item quantity is ' + item.quantity)
                     const index = this.inventory.indexOf(item)
