@@ -27,9 +27,9 @@ export class InventoryController {
     }
 
     @Patch('')
-    update(@Param('inventory') inventory: Item, @Body() updateInventoryDto: UpdateInventoryDto) {
-       console.log('controller path inventory' + inventory);
-        return this.inventoryService.update(inventory, updateInventoryDto);
+    update(@Param('') item: Item, @Body() updateInventoryDto: UpdateInventoryDto) {
+       console.log('controller path inventory' + item);
+        return this.inventoryService.update(item, updateInventoryDto);
     }
 
     // @Delete(':item')
