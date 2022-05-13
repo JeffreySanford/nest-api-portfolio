@@ -10,7 +10,7 @@ export class UsersService {
   userbaseSize: number;
 
   constructor() {
-    this.mockUserbase(100000);
+    this.mockUserbase(1000000);
   }
 
   create(createUserDto: CreateUserDto) {
