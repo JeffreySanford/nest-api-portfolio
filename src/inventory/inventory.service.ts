@@ -20,22 +20,21 @@ export class InventoryService {
 		return this.inventory;
 	}
 
-	findOne(name: string): Item {
+	findOne(id: number): Item {
 		console.log('findOne')
-		const item = this.inventory.map((item: Item) => {
-			if (item.name === name) {
+		let item: Item;
+		this.inventory.map((item: Item) => {
+			if (item.id === id) {
+				console.log(item.name)
 				return item;
 			}
-		})
+		});
 
-		if (item) {
-			debugger
-			return item[0];
-		}
+		return item;
 	}
 
 	update(newItem: Item, updateRecipeDto: UpdateInventoryDto): Array<Item> {
-		console.log('service with new item ' + newItem.quantity)
+		console.log('service with new item ' + newItem.quantity);
 		this.inventory.map((item) => {
 			if (newItem) {
 				console.dir(newItem);

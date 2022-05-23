@@ -15,10 +15,12 @@ export class InventoryController {
         return this.inventoryService.findAll();
     }
 
-    @Get('')
-    findOne(@Param('name') name: string) {
-        name = name.substring(1)
-        return this.inventoryService.findOne(name);
+    @Get(':id')
+    findOne(@Param('id') id: string) {
+        console.log(id.slice(1))
+        const idNumber = parseInt(id.slice(1));
+        console.log('controller '+ idNumber, typeof id)
+        return this.inventoryService.findOne(idNumber);
     }
 
     @Post()
@@ -26,9 +28,9 @@ export class InventoryController {
         return this.inventoryService.create(createInventoryDto);
     }
 
-    @Patch()
-    update(@Param('inventory') item: Item, @Body('item') updateInventoryDto: UpdateInventoryDto) {
-       console.dir('controller path inventory' + item);
+    @Patch(':item')
+    updateItemQuantity(@Param('inventory') item: Item, @Body('item') updateInventoryDto: UpdateInventoryDto) {
+        console.dir('controller path inventory' + item);
         return this.inventoryService.update(item, updateInventoryDto);
     }
 
