@@ -12,8 +12,9 @@ export class InventoryService {
 	constructor() {
 		this.config();
 	}
-	create(createUserDto: CreateInventoryDto) {
-		return 'This action adds a new user';
+	create(item: Item, createUserDto: CreateInventoryDto) {
+		this.inventory.push(item);
+		return this.inventory;
 	}
 
 	findAll(): Array<Item> {

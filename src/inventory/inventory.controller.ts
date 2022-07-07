@@ -24,11 +24,11 @@ export class InventoryController {
     }
 
     @Post()
-    create(@Body() createInventoryDto: CreateInventoryDto) {
-        return this.inventoryService.create(createInventoryDto);
+    create(@Body() item: Item, createInventoryDto: CreateInventoryDto) {
+        return this.inventoryService.create(item, createInventoryDto);
     }
 
-    @Patch(':item')
+    @Patch()
     updateItemQuantity(@Param('inventory') item: Item, @Body('item') updateInventoryDto: UpdateInventoryDto) {
         console.dir('controller path inventory' + item);
         return this.inventoryService.update(item, updateInventoryDto);
